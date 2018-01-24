@@ -1,51 +1,51 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
+import fakeData from './mock_data.js'
 
 class App extends Component {
-    state = { votes: 0 }
-    handlePlus = () => {
-        this.setState(prevState => ({ votes: prevState.votes + 1 }))
+    state = { 
+        students: [], 
+        isLoading: true
     }
-    handleMinus = () => {
-        this.setState(prevState => ({ votes: prevState.votes - 1 }))
-    }
-    reset = () => {
-        this.setState(prevState => ({ votes: 0 }))
+
+    componentDidMount() {
+        console.log(this.state.students)
+        console.log(fakeData)
+        let timer = setTimeout( () => {
+            this.setState( prevState => {
+                return (
+                    {
+                        students: fakeData,
+                        isLoading: false
+                    }
+                )
+            })
+            console.log(this.state)
+        }, 1000)
     }
     render() {
-        return (
-            <div>
-                <div className='header header--centered'>
-                    Number of Votes: { this.state.votes }
+        if (this.state.isLoading) {
+            return (
+                <div>
+                    Loading...
                 </div>
-                <div className='buttons buttons--centered'>
-                    <div className='buttons buttons--spaced'>
-                        <PlusButton handleClick={ this.handlePlus }/>
-                        <MinusButton handleClick={ this.handleMinus }/>
-                    </div>
-                    <ResetButton handleClick={ this.reset }/>
+            )
+        } else {
+            return (
+                <div>
+                    <ul>
+                        {this.state.students.map(student => {
+                            return(
+                                <li key={student.id}>
+                                    {student.first_name}
+                                </li>
+                            )
+                        })}
+                    </ul>
                 </div>
-            </div>
-        )
+            )
+        }
     }
-}
-
-const PlusButton = (props) => {
-    return (
-        <div className='button' onClick={ props.handleClick }><p>+</p></div>
-    )
-}
-
-const MinusButton = (props) => {
-    return (
-        <div className='button button--minus' onClick={ props.handleClick }>-</div>
-    )
-}
-
-const ResetButton = (props) => {
-    return (
-        <div className='button button--reset button--centered' onClick={ props.handleClick }>Reset</div>
-    )
 }
 
 render(

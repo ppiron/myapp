@@ -953,6 +953,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactDom = __webpack_require__(18);
 
+var _mock_data = __webpack_require__(28);
+
+var _mock_data2 = _interopRequireDefault(_mock_data);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -975,78 +979,60 @@ var App = function (_Component) {
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.state = { votes: 0 }, _this.handlePlus = function () {
-            _this.setState(function (prevState) {
-                return { votes: prevState.votes + 1 };
-            });
-        }, _this.handleMinus = function () {
-            _this.setState(function (prevState) {
-                return { votes: prevState.votes - 1 };
-            });
-        }, _this.reset = function () {
-            _this.setState(function (prevState) {
-                return { votes: 0 };
-            });
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+            students: [],
+            isLoading: true
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(App, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            console.log(this.state.students);
+            console.log(_mock_data2.default);
+            var timer = setTimeout(function () {
+                _this2.setState(function (prevState) {
+                    return {
+                        students: _mock_data2.default,
+                        isLoading: false
+                    };
+                });
+                console.log(_this2.state);
+            }, 1000);
+        }
+    }, {
         key: 'render',
         value: function render() {
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
+            if (this.state.isLoading) {
+                return _react2.default.createElement(
                     'div',
-                    { className: 'header header--centered' },
-                    'Number of Votes: ',
-                    this.state.votes
-                ),
-                _react2.default.createElement(
+                    null,
+                    'Loading...'
+                );
+            } else {
+                return _react2.default.createElement(
                     'div',
-                    { className: 'buttons buttons--centered' },
+                    null,
                     _react2.default.createElement(
-                        'div',
-                        { className: 'buttons buttons--spaced' },
-                        _react2.default.createElement(PlusButton, { handleClick: this.handlePlus }),
-                        _react2.default.createElement(MinusButton, { handleClick: this.handleMinus })
-                    ),
-                    _react2.default.createElement(ResetButton, { handleClick: this.reset })
-                )
-            );
+                        'ul',
+                        null,
+                        this.state.students.map(function (student) {
+                            return _react2.default.createElement(
+                                'li',
+                                { key: student.id },
+                                student.first_name
+                            );
+                        })
+                    )
+                );
+            }
         }
     }]);
 
     return App;
 }(_react.Component);
-
-var PlusButton = function PlusButton(props) {
-    return _react2.default.createElement(
-        'div',
-        { className: 'button', onClick: props.handleClick },
-        _react2.default.createElement(
-            'p',
-            null,
-            '+'
-        )
-    );
-};
-
-var MinusButton = function MinusButton(props) {
-    return _react2.default.createElement(
-        'div',
-        { className: 'button button--minus', onClick: props.handleClick },
-        '-'
-    );
-};
-
-var ResetButton = function ResetButton(props) {
-    return _react2.default.createElement(
-        'div',
-        { className: 'button button--reset button--centered', onClick: props.handleClick },
-        'Reset'
-    );
-};
 
 (0, _reactDom.render)(_react2.default.createElement(App, null), document.getElementById('root'));
 
@@ -7794,6 +7780,19 @@ function camelize(string) {
 }
 
 module.exports = camelize;
+
+/***/ }),
+/* 27 */,
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = [{ "id": 1, "first_name": "Joell", "last_name": "Vasilik", "email": "jvasilik0@unicef.org", "phone": "923-893-1106", "lp": 3 }, { "id": 2, "first_name": "Quintin", "last_name": "Peare", "email": "qpeare1@reuters.com", "phone": "255-718-1613", "lp": 4 }, { "id": 3, "first_name": "Kizzee", "last_name": "Yankeev", "email": "kyankeev2@deviantart.com", "phone": "173-190-0265", "lp": 4 }, { "id": 4, "first_name": "Deedee", "last_name": "Putt", "email": "dputt3@bing.com", "phone": "590-318-1129", "lp": 1 }, { "id": 5, "first_name": "Claudio", "last_name": "Iggalden", "email": "ciggalden4@com.com", "phone": "153-612-8898", "lp": 0 }, { "id": 6, "first_name": "Vallie", "last_name": "Everett", "email": "veverett5@cbc.ca", "phone": "609-118-5493", "lp": 4 }, { "id": 7, "first_name": "Noe", "last_name": "Parham", "email": "nparham6@marketwatch.com", "phone": "698-374-8163", "lp": 1 }, { "id": 8, "first_name": "Bobbette", "last_name": "Manifold", "email": "bmanifold7@telegraph.co.uk", "phone": "946-732-6900", "lp": 3 }, { "id": 9, "first_name": "Fanni", "last_name": "Radbourn", "email": "fradbourn8@lycos.com", "phone": "178-973-4400", "lp": 1 }, { "id": 10, "first_name": "Hendrik", "last_name": "Fancutt", "email": "hfancutt9@php.net", "phone": "178-879-4426", "lp": 3 }, { "id": 11, "first_name": "Aidan", "last_name": "Geikie", "email": "ageikiea@imageshack.us", "phone": "508-525-7665", "lp": 2 }, { "id": 12, "first_name": "Brent", "last_name": "Pacher", "email": "bpacherb@imgur.com", "phone": "926-508-7845", "lp": 0 }, { "id": 13, "first_name": "Genia", "last_name": "Emblin", "email": "gemblinc@pbs.org", "phone": "270-978-5391", "lp": 0 }, { "id": 14, "first_name": "Geraldine", "last_name": "Tidbald", "email": "gtidbaldd@yellowpages.com", "phone": "297-767-2262", "lp": 2 }, { "id": 15, "first_name": "Annmarie", "last_name": "Gianettini", "email": "agianettinie@aboutads.info", "phone": "738-850-7979", "lp": 3 }, { "id": 16, "first_name": "Griswold", "last_name": "Blanden", "email": "gblandenf@google.co.uk", "phone": "349-679-0550", "lp": 0 }, { "id": 17, "first_name": "Cal", "last_name": "Flight", "email": "cflightg@clickbank.net", "phone": "854-740-8138", "lp": 2 }, { "id": 18, "first_name": "Jenifer", "last_name": "Moreinis", "email": "jmoreinish@netlog.com", "phone": "349-529-7464", "lp": 0 }, { "id": 19, "first_name": "Merna", "last_name": "Paynter", "email": "mpaynteri@4shared.com", "phone": "800-645-8242", "lp": 4 }, { "id": 20, "first_name": "Richmond", "last_name": "Lawrie", "email": "rlawriej@cdc.gov", "phone": "210-305-9636", "lp": 4 }];
 
 /***/ })
 /******/ ]);
