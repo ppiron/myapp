@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import fakeData from './mock_data.js'
 
 class App extends Component {
     state = { 
@@ -10,18 +9,22 @@ class App extends Component {
 
     componentDidMount() {
         console.log(this.state.students)
-        console.log(fakeData)
-        let timer = setTimeout( () => {
-            this.setState( prevState => {
-                return (
+        const request = new Request('http://localhost:3300/students', {
+	        method: 'GET', 
+	        mode: 'cors'
+        })
+        fetch(request).then( (response) => {
+            return response.json()
+        }).then( (data) => {
+            this.setState( (prevState) => {
+                return(
                     {
-                        students: fakeData,
+                        students: data,
                         isLoading: false
                     }
                 )
             })
-            console.log(this.state)
-        }, 1000)
+        })
     }
     render() {
         if (this.state.isLoading) {
@@ -37,7 +40,7 @@ class App extends Component {
                         {this.state.students.map(student => {
                             return(
                                 <li key={student.id}>
-                                    {student.first_name}
+                                    {student.name} {student.surname}
                                 </li>
                             )
                         })}
