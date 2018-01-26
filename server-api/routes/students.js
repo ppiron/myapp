@@ -16,8 +16,8 @@ router.get('/', (req, res, next) => {
     client.connect()
       
     const text = `SELECT * FROM students`
-    client.query(text, (error, values) => {
-        res.status(200).json(values.rows)
+    client.query(text, (error, response) => {
+        res.status(200).json(response.rows)
         client.end()
     })
     
@@ -47,15 +47,25 @@ router.post('/', jsonParser, (req, res, next) => {
 
 router.get('/:studentID', (req, res, next) => {
     const id = req.params.studentID
-    if (id === 'pippo') {
-        res.status(200).json({
-            message: "Ciao pippo"
-        })
-    } else {
-         res.status(200).json({
-             message: "Non sei pippo"
-        })
-    }
+    const client = new Client({
+        user: 'paolo',
+        host: 'localhost',
+        database: 'mydb',
+        password: 'ifyewnt7',
+        port: 5432,
+    })
+    client.connect()
+
+    const text = `SELECT * FROM students WHERE id = $1`
+    const values = [id]
+    client.query(text, values, (error, response) => {
+        if (error) {
+        console.log(error.stack)
+        } else {
+        res.status(200).json(response.rows[0])
+        }
+        client.end()
+    })
 })
 
 router.patch('/:studentID', (req, res, next) => {

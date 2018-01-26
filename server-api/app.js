@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const studentRoutes = require('./routes/students')
+const studentRoutes = require('./routes/students.js')
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
