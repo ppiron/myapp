@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
         user: 'paolo',
         host: 'localhost',
         database: 'mydb',
-        password: 'ifyewnt7',
+        password: '1234567',
         port: 5432,
     })
     client.connect()
@@ -28,7 +28,7 @@ router.post('/', jsonParser, (req, res, next) => {
         user: 'paolo',
         host: 'localhost',
         database: 'mydb',
-        password: 'ifyewnt7',
+        password: '1234567',
         port: 5432,
     })
     client.connect()
@@ -51,7 +51,7 @@ router.get('/:studentID', (req, res, next) => {
         user: 'paolo',
         host: 'localhost',
         database: 'mydb',
-        password: 'ifyewnt7',
+        password: '1234567',
         port: 5432,
     })
     client.connect()
