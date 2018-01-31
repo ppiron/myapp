@@ -6,17 +6,18 @@ import {
   } from 'react-router-dom'
 import { render } from 'react-dom'
 import Home from './components/home'
+import Student from './components/student'
 
-class App extends Component {
-    render() {
-        return (
-            <Home />
-        )
-    }
-}
+// class App extends Component {
+//     render() {
+//         return (
+//             <Home />
+//         )
+//     }
+// }
 
 render((
     <Router>
-        <App />
+        <Home />
     </Router>
 ), document.getElementById('root'))

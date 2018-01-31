@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
+import {
+    BrowserRouter as Router,
+    Route
+  } from 'react-router-dom'
 import Students from './students'
+import Student from './student'
 
 class Home extends Component {
     state = { 
@@ -36,11 +41,24 @@ class Home extends Component {
         } else {
             return (
                 <div>
-                    <Students students={this.state.students} />
+                    <Route exact path='/static' render={() => (
+                        <Students students={this.state.students} />
+                    )}>
+                    </Route>
+                    <Route path='/static/:id' render={({match}) => {
+                        const Selectedstudent = this.state.students.filter( (student) => {
+                            return student.id === parseInt(match.params.id)
+                        })
+                        console.log(Selectedstudent)
+                        return <Student data={Selectedstudent[0]}/>
+                    }}>
+                    </Route>
+                    
                 </div>
             )
         }
     }
+    
 }
 
 export default Home
