@@ -4,13 +4,14 @@ const { Pool, Client } = require('pg')
 const bodyParser = require('body-parser')
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 const jsonParser = bodyParser.json()
+const PWD = '1234567'
 
 router.get('/', (req, res, next) => {
     const client = new Client({
         user: 'paolo',
         host: 'localhost',
         database: 'mydb',
-        password: '1234567',
+        password: PWD,
         port: 5432,
     })
     client.connect()
@@ -28,7 +29,7 @@ router.post('/', jsonParser, (req, res, next) => {
         user: 'paolo',
         host: 'localhost',
         database: 'mydb',
-        password: '1234567',
+        password: PWD,
         port: 5432,
     })
     client.connect()
@@ -51,7 +52,7 @@ router.get('/:studentID', (req, res, next) => {
         user: 'paolo',
         host: 'localhost',
         database: 'mydb',
-        password: '1234567',
+        password: PWD,
         port: 5432,
     })
     client.connect()
