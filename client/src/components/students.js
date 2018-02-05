@@ -9,7 +9,7 @@ function Students(props) {
     })
 
     return (
-        <ul>
+        <ul className='students-list'>
             {students}
         </ul>
     )

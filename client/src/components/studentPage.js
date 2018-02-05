@@ -1,20 +1,14 @@
 import React, { Component } from 'react'
-import {
-    BrowserRouter as Router,
-    Route
-  } from 'react-router-dom'
-import Students from './students'
-// import Student from './student'
 
-class Home extends Component {
-    state = { 
-        students: [], 
+class StudentPage extends Component {
+    state = {
+        student: {},
         isLoading: true
     }
-
     componentDidMount() {
-        console.log(this.state.students)
-        const request = new Request('http://localhost:3300/students', {
+        console.log(this.state.student)
+        const studentID = this.props.match.params.id
+        const request = new Request(`http://localhost:3300/students/${studentID}`, {
 	        method: 'GET', 
 	        mode: 'cors'
         })
@@ -24,7 +18,7 @@ class Home extends Component {
             this.setState( (prevState) => {
                 return(
                     {
-                        students: data,
+                        student: data,
                         isLoading: false
                     }
                 )
@@ -41,12 +35,12 @@ class Home extends Component {
         } else {
             return (
                 <div>
-                    <Students students={this.state.students} />                    
+                    Name: {this.state.student.name}                    
                 </div>
             )
         }
     }
-    
+
 }
 
-export default Home
+export default StudentPage

@@ -5,19 +5,22 @@ import {
     Link
   } from 'react-router-dom'
 import { render } from 'react-dom'
-import Home from './components/home'
-import Student from './components/student'
+import Main from './components/main'
+import Header from './components/header'
 
-// class App extends Component {
-//     render() {
-//         return (
-//             <Home />
-//         )
-//     }
-// }
+class App extends Component {
+    render() {
+        return (
+            <div>
+                <Header />
+                <Main />
+            </div>
+        )
+    }
+}
 
 render((
     <Router>
-        <Home />
+        <App />
     </Router>
 ), document.getElementById('root'))
