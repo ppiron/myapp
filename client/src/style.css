@@ -1,4 +1,6 @@
 @import "normalize.css";
+@import "./components/students.css";
+@import "./components/student.css";
 body {
   font-family: Arial, Helvetica, sans-serif;
 }

@@ -1,0 +1,17 @@
+.student-link {
+    text-decoration: none;
+    color: lightblue;
+
+}
+.student-link:hover {
+    color: crimson;
+}
+.student-link > li {
+    margin: 10px 0;
+    border: 1px solid gainsboro;
+    padding: 5px;
+    border-radius: 5px;
+}
+.student-link > li:hover {
+    background-color: lavender;
+}
