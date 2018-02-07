@@ -1,0 +1,22 @@
+.header-list {
+    margin-top: 0;
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    color: rgb(94, 28, 138);
+}
+.header-list a {
+    text-decoration: none;
+    color: inherit;
+}
+.header-list > li {
+    margin: 0 10px;
+    border: 1px solid gainsboro;
+    padding: 5px;
+    border-radius: 5px;
+}
+.header-list > li:hover {
+    background-color: blueviolet;
+    color: gainsboro;
+}
